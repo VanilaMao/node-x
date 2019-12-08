@@ -1,0 +1,25 @@
+version: '3'
+services:
+  PostgreSql:
+    image: postgres:10-alpine
+    ports:
+      - "5500:5432"
+    environment:
+      - POSTGRES_DB=stockX
+      - POSTGRES_USER=root
+      - POSRTGRES_PASSWORD=stockx
+  stockx:
+    build: .
+    ports:
+      - "5000:8000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=root
+      - DB_PASSWORD=stockx
+      - DB_DB=stockX
+      - DB_TYPE=postgres
+    restart: always
+    links:
+      - "PostgreSql:db"
