@@ -29,7 +29,7 @@ const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
                 <ListGroup variant="flush" className="list-group-flush" >
                    {inventories.map(item => <div key={item.id}>
                         {renderItemSummary(item,setEditItem)}
-                        {editItem === item.id? renderItemDetails(item,saveInventory):null}
+                        {editItem === item.id? <RenderItemDetails item ={item} saveInventory ={saveInventory}/>:null}
 
                    </div>)}
                 </ListGroup> 
@@ -56,10 +56,10 @@ function changeItemSizes(item,value){
     }else{
         item.trueToSize.sizes =[];
     }
-    
 }
 
-function renderItemDetails(item,saveInventory) {
+const RenderItemDetails = ({item,saveInventory}) =>{
+    const [sizes,setSizes] = useState(item.trueToSize.sizes.join(","));
     return (
         <div key={item.id+"tureSize"}>
             <ListGroupItem >
@@ -75,9 +75,12 @@ function renderItemDetails(item,saveInventory) {
                     <ListGroup variant="flush" className="list-group-flush active" >
                         <ListGroupItem disabled="true">trueToSize: {item.trueToSize.averageSize}</ListGroupItem>
                         <FormControl
-                            
+                            value = {sizes}
                             aria-describedby="basic-addon1"
-                            onChange={e=>changeItemSizes(item, e.target.value)}
+                            onChange={e=>{
+                                setSizes(e.target.value)
+                                changeItemSizes(item, e.target.value)}
+                            }
                         />
                     </ListGroup>
                 </Card>
