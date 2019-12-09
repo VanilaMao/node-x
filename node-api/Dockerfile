@@ -4,7 +4,7 @@ RUN echo $NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm i -g @nestjs/cli --slient
 RUN npm install --slient
 COPY . .
-CMD ["npm", "run","start"]
+RUN npm run build
+CMD ["npm", "run","start:prod"]

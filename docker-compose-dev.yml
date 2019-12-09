@@ -9,7 +9,9 @@ services:
       - POSTGRES_USER=root
       - POSRTGRES_PASSWORD=stockx
   stockx:
-    build: .
+    build:
+      context: ./node-api
+      dockerfile: Dockerfile
     ports:
       - "5000:8000"
     environment:
@@ -23,3 +25,12 @@ services:
     restart: always
     links:
       - "PostgreSql:db"
+  web:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "4500:3000"
+    restart: always
+    depends_on: 
+      - "stockx"
