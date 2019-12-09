@@ -6,6 +6,7 @@
       
  ## Url for Apps
    A. Node Js Server: localhost:5000 
+   
    B. Front End: localhost:4500
    
  ## PostGreSQL DB
