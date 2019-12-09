@@ -1,5 +1,6 @@
 import { Controller, Get, Post,Body, Param } from '@nestjs/common';
 import {ShoesRepository} from '../db/repositories/shoes.resository';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('shoes')
 export class ShoesController {
@@ -13,7 +14,15 @@ export class ShoesController {
           .then(shoes=>shoes);
     }
 
+
     @Post('/new')
+    @ApiBody({
+      schema:{
+        type:"string",
+        nullable:false,
+        example:'Nike 2019 limited'
+      }   
+    })
     async writeShoes(@Body('name') name:string){
       return await this.shoesRepository.createShoes(name).then(async id=>this.getShoesById(id));
     }
@@ -23,6 +32,12 @@ export class ShoesController {
     }
 
     @Post('/update/:id')
+    @ApiBody({
+      schema:{
+        type:"array",
+        example:'"trueToSizes":[1,2,3,4,5]'
+      }   
+    })
     async updateShoes(@Param('id') id:string, @Body('trueToSizes') sizes:number []){
       return await this.shoesRepository.findOne(id,{relations:['trueToSize']}).then(
         async shoes=>{
