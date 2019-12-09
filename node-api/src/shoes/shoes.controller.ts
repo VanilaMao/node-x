@@ -29,7 +29,7 @@ export class ShoesController {
             shoes.trueToSize.sizes = sizes;
             shoes.trueToSize.averageSize = 
             sizes.reduce((previous,current)=>previous+current,0)/sizes.length;
-            return await this.shoesRepository.save(shoes).then(async ()=> this.getShoesById(id));
+            return await this.shoesRepository.save(shoes).then(shoes=>shoes);
         }
       )
     }
