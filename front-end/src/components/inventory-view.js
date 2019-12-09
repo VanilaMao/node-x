@@ -4,7 +4,6 @@ import { Card, ListGroup, ListGroupItem, Button,InputGroup,FormControl} from 're
 const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
     const [newInventoryName, setNewInventoryName] = useState(' ');
     const [editItem, setEditItem] = useState(' ');
-    console.log(inventories);
     return ( <div>
         <Card>
             <Card.Header as="h5">Shoes</Card.Header>
