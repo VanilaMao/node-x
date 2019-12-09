@@ -33,7 +33,7 @@
       e. input a size collection in the trueToSize textbox, the format is like this:1,2,3,4
       f. click save button in the edit panel, and the trueToSize will get updated via calcualtion in the backend
       
-  ## Technical part discussion, please review it in the technical.readme file.
+  ## Technical part discussion, please review it in the technical.readme.md file.
    
    
    
