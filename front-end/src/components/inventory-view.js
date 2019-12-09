@@ -3,6 +3,7 @@ import { Card, ListGroup, ListGroupItem, Button,InputGroup,FormControl} from 're
 
 const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
     const [newInventoryName, setNewInventoryName] = useState(' ');
+    const [editItem, setEditItem] = useState(' ');
     console.log(inventories);
     return ( <div>
         <Card>
@@ -26,34 +27,44 @@ const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
                 </InputGroup>
             </Card.Body>
                 <ListGroup variant="flush" className="list-group-flush" >
-                   {inventories.map(item => renderItemSummary(item,saveInventory))}
+                   {inventories.map(item => <div key={item.id}>
+                        {renderItemSummary(item,setEditItem)}
+                        {editItem === item.id? renderItemDetails(item,saveInventory):null}
+
+                   </div>)}
                 </ListGroup> 
         </Card>
     </div>)
 }
 
-function renderItemSummary(item,saveInventory) {
+function renderItemSummary(item,setEditItem) {
     return (
         <div key={item.id}>
             <ListGroupItem >
                 <div className="d-flex">
-                    {item.name}
-                    <Button onClick={() => renderItemDetails(item,saveInventory)} variant="primary" className="ml-auto">Edit</Button>
+                    {item.name+"("+item.id+")"}
+                    <Button onClick={() => setEditItem(item.id)} variant="primary" className="ml-auto">Edit</Button>
                 </div>
             </ListGroupItem>
         </div>);
 }
 
 function changeItemSizes(item,value){
-    item.trueToSize.sizes = value;
+    if(!!value){
+        var ar = value.split(",");
+        item.trueToSize.sizes = ar.map(size=>+size);
+    }else{
+        item.trueToSize.sizes =[];
+    }
+    
 }
 
 function renderItemDetails(item,saveInventory) {
     return (
-        <div key={item.id}>
+        <div key={item.id+"tureSize"}>
             <ListGroupItem >
                 <Card >
-                    <Card.Header bg="blue" as="h5"> {item.name}</Card.Header>
+                    <Card.Header bg="blue" as="h5">True To Size</Card.Header>
                     <Card.Body>
                         <Card.Title>A fantastic shoes</Card.Title>
                         <Card.Text>
@@ -62,9 +73,9 @@ function renderItemDetails(item,saveInventory) {
                         <Button onClick={() => saveInventory(item)} variant="secondary" className="ml-auto">Save</Button>
                     </Card.Body>
                     <ListGroup variant="flush" className="list-group-flush active" >
-                        <ListGroupItem>Id: {item.id}$</ListGroupItem>
                         <ListGroupItem disabled="true">trueToSize: {item.trueToSize.averageSize}</ListGroupItem>
                         <FormControl
+                            
                             aria-describedby="basic-addon1"
                             onChange={e=>changeItemSizes(item, e.target.value)}
                         />

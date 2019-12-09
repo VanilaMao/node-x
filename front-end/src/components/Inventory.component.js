@@ -16,6 +16,7 @@ const InventoryComponent = ({ inventories,loadInventories,saveInventory,createIn
 };
 
 function renderInventories(inventories,saveInventory, createInventory) {
+    console.log("render");
     console.log(inventories)
     return (<div style={{ padding: 20 }}>
         <InventoryCard inventories={inventories} 
