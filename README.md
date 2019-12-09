@@ -2,7 +2,7 @@
    1. Install prequisition software Docker, if Docker is installed, skip this step
    2. go to the root folder which containing the Docker-compose-dev.yml file
    3. run docker-compose with command: docker-compose -f docker-compose-dev.yml up --build --force-recreate
-      if no logging is needed, use command: docker-compose -f docker-compose-dev.yml up --build --force-recreate -d
+        ,if no logging is needed, use command: docker-compose -f docker-compose-dev.yml up --build --force-recreate -d
       
  ## Url for Apps
    A. Node Js Server: localhost:5000 
