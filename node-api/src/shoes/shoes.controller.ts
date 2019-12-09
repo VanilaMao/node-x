@@ -1,12 +1,13 @@
-import { Controller, Get, Post,Body, Param } from '@nestjs/common';
+import { Controller, Get, Post,Body, Param, Inject, LoggerService } from '@nestjs/common';
 import {ShoesRepository} from '../db/repositories/shoes.resository';
 import { ApiBody } from '@nestjs/swagger';
 
 @Controller('shoes')
 export class ShoesController {
-    constructor(private shoesRepository: ShoesRepository){
-        
-    }
+    constructor(
+      @Inject('stockx') private logger,
+      private shoesRepository: ShoesRepository){
+      }
 
     @Get()
     async getShoes(){
