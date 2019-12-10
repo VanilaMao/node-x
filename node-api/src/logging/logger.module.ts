@@ -22,7 +22,6 @@ export class LoggerModule{
               }),
             ],
         });
-        //var provider = module.providers.find(x=>x['provide'] ===WINSTON_MODULE_NEST_PROVIDER);
         var stockx : Provider= {
             provide: "stockx",
             useFactory: (logger)=>logger,

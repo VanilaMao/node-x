@@ -15,7 +15,7 @@ describe('test inventory reducer', () => {
                 name:"adidas",
                 trueToSize: {
                     sizes: [1,2,3],
-                    averageSize : 2
+                    trueToSizeCalculation : 2
                 }
             },
             {
@@ -23,7 +23,7 @@ describe('test inventory reducer', () => {
                 name:"nike",
                 trueToSize: {
                     sizes: [4,5,6],
-                    averageSize :5
+                    trueToSizeCalculation :5
                 }
             },
         ])
