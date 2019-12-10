@@ -49,6 +49,6 @@ schema and entity relationship definition
     Front End could be much better, since this question is more focused on backend, UI is just a tool to test the solution
     
    ## Thinking
-     Message Queue and gateway could add tons of value in mulitiple micro services environment
+     Message Queue and gateway could add tons of values in mulitiple micro services environment
     
     
