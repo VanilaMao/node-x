@@ -11,7 +11,7 @@ services:
   stockx:
     build:
       context: ./node-api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
       - "5000:8000"
     environment:
