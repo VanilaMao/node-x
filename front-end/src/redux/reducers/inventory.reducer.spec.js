@@ -28,7 +28,6 @@ describe('test inventory reducer', () => {
             },
         ])
         var result = reducer(initializeState, inventoriesLoadedAction);
-        expect(result.isLoadingInventory).toBe(false);
         expect(result.inventories.length).toBe(2);
     });
 })
