@@ -41,6 +41,10 @@ schema and entity relationship definition
   ## Authentication/Authorization
     Security is missing for now to reduce complexity, but it is mandatory in a real project
     
+  ## Validation
+    Validation is missing (such as validate size range from 1-5 etc) is missing for simplefying solution, but it is good
+    for user experenience and a robust system 
+    
   ## Front End
     Front End could be much better, since this question is more focused on backend, UI is just a tool to test the solution
     
