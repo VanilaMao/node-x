@@ -21,3 +21,26 @@ schema and entity relationship definition
    
       ## Logging
   In order to log info in server with a generic logging without knowledge of underlying implementation, a logging module wrapped winston library is implemented, with it, other module just need to inject the dependency with a generic 'stockx' logging service.
+
+
+
+
+## improvement and thinking
+  ## Logging/Monitoring
+    A. Usually Splunk/DataDog is the choice for business, since this is a project with open and free library, winston is selected
+    B. Logging Setting can be customized from config file and then set up it in the logging module, so that a new settings can be appliedwithout modifying code.
+    
+  ## Testing
+   A. E2E testing is missing at this point, it is very useful in real project
+   B. need more unit tests and code coverage test
+   
+  ## Error/Exception handling
+    At this point, exception handling is missing which is very valuable in real project, for complexity business model, 
+    error code system is also valuable
+    
+  ## Authentication/Authorization
+    Security is missing for now to reduce complexity, but it is mandatory in a real project
+    
+  ## Front End
+    Front End could be much better, since this question is more focused on backend, UI is just a tool to test the solution
+    
