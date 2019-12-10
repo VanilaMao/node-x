@@ -1,4 +1,4 @@
-## Architecture
+## Section 1 ---Architecture
   
   ## Main Technology
       
@@ -25,7 +25,7 @@ schema and entity relationship definition
 
 
 
-## improvement and thinking
+## Section 2 -- Improvement and Thinking
   ## Logging/Monitoring
     A. Usually Splunk/DataDog is the choice for business, since this is a project with open and free library, winston is selected
     B. Logging Setting can be customized from config file and then set up it in the logging module, so that a new settings can be appliedwithout modifying code.
