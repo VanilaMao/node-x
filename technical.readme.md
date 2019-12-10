@@ -45,8 +45,10 @@ schema and entity relationship definition
     Validation is missing (such as validate size range from 1-5 etc) is missing for simplefying solution, but it is good
     for user experenience and a robust system 
    
-   ## Message Queue and gateway could add in tons of value
-   
    ## Front End
     Front End could be much better, since this question is more focused on backend, UI is just a tool to test the solution
+    
+   ## Thinking
+     Message Queue and gateway could add tons of value in mulitiple micro services environment
+    
     
