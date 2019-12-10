@@ -8,7 +8,7 @@ export class TrueToSize{
    id: string;
 
    @Column("float")
-   averageSize: number;
+   trueToSizeCalculation: number;
 
    @Column("float", { array: true })
    sizes: number[];
