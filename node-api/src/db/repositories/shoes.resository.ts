@@ -6,7 +6,7 @@ import { TrueToSize } from '../entities/shoes.true-size.entity';
 export class ShoesRepository extends Repository<Shoes> {
     createShoes= async (shoesName: string) => {
       var trueToSize = new TrueToSize();
-      trueToSize.averageSize =0;
+      trueToSize.trueToSizeCalculation =0;
       trueToSize.sizes=[];
       var shoes =new Shoes();
       shoes.name = shoesName;

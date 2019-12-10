@@ -5,9 +5,8 @@ import { ApiBody } from '@nestjs/swagger';
 @Controller('shoes')
 export class ShoesController {
     constructor(
-      @Inject('stockx') private logger,
-      private shoesRepository: ShoesRepository){
-      }
+      @Inject('stockx') private loggerService: LoggerService,
+      private shoesRepository: ShoesRepository){}
 
     @Get()
     async getShoes(){
@@ -15,6 +14,11 @@ export class ShoesController {
           .then(shoes=>shoes);
     }
 
+
+    @Get('/truetosizecalculation/:id')
+    async getTrueToSizeCalculation(@Param('id') id:string){
+        return await this.getShoesById(id).then(shoes=>shoes.trueToSize.trueToSizeCalculation);
+    }
 
     @Post('/new')
     @ApiBody({
@@ -25,12 +29,10 @@ export class ShoesController {
       }   
     })
     async writeShoes(@Body('name') name:string){
+      this.loggerService.log(`${name} is created by Tylor Swift`)
       return await this.shoesRepository.createShoes(name).then(async id=>this.getShoesById(id));
     }
 
-    async getShoesById(id:string){
-      return await this.shoesRepository.findOne(id,{relations:['trueToSize']}).then(shoes=>shoes);
-    }
 
     @Post('/update/:id')
     @ApiBody({
@@ -40,13 +42,18 @@ export class ShoesController {
       }   
     })
     async updateShoes(@Param('id') id:string, @Body('trueToSizes') sizes:number []){
+      this.loggerService.log(`${id} is updated by Tylor Swift with ${sizes}`)
       return await this.shoesRepository.findOne(id,{relations:['trueToSize']}).then(
         async shoes=>{
             shoes.trueToSize.sizes = sizes;
-            shoes.trueToSize.averageSize = 
+            shoes.trueToSize.trueToSizeCalculation = 
             sizes.reduce((previous,current)=>previous+current,0)/sizes.length;
             return await this.shoesRepository.save(shoes).then(shoes=>shoes);
         }
       )
+    }
+
+    private async getShoesById(id:string){
+      return await this.shoesRepository.findOne(id,{relations:['trueToSize']}).then(shoes=>shoes);
     }
 }
