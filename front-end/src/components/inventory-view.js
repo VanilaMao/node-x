@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { Card, ListGroup, ListGroupItem, Button,InputGroup,FormControl} from 'react-bootstrap';
 
 const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
-    const [newInventoryName, setNewInventoryName] = useState(' ');
-    const [editItem, setEditItem] = useState(' ');
+    const [newInventoryName, setNewInventoryName] = useState('');
+    const [editItem, setEditItem] = useState('');
+    const createNewInventory = (name)=>{
+        if(!!name&&!!name.trim()){
+            createInventory(name)
+        }
+    }
     return ( <div>
         <Card>
             <Card.Header as="h5">Shoes</Card.Header>
@@ -22,7 +27,7 @@ const InventoryCard = ({ inventories,saveInventory, createInventory }) => {
                         aria-describedby="basic-addon1"
                         onChange={e=>setNewInventoryName(e.target.value)}
                     />
-                    <Button className="ml-1" onClick={()=>createInventory(newInventoryName)}>Create</Button>
+                    <Button className="ml-1" onClick={()=>createNewInventory(newInventoryName)}>Create</Button>
                 </InputGroup>
             </Card.Body>
                 <ListGroup variant="flush" className="list-group-flush" >
