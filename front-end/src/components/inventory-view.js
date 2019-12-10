@@ -72,8 +72,9 @@ const RenderItemDetails = ({item,saveInventory}) =>{
                         <Button onClick={() => saveInventory(item)} variant="secondary" className="ml-auto">Save</Button>
                     </Card.Body>
                     <ListGroup variant="flush" className="list-group-flush active" >
-                        <ListGroupItem disabled="true">trueToSize: {item.trueToSize.averageSize}</ListGroupItem>
+                        <ListGroupItem disabled="true">trueToSizeCaculation: {item.trueToSize.trueToSizeCalculation}</ListGroupItem>
                         <FormControl
+                            placeholder = "please input sizes, range from 1-5, like:1,2,3,4,5"
                             value = {sizes}
                             aria-describedby="basic-addon1"
                             onChange={e=>{
