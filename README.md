@@ -1,3 +1,5 @@
+A simple project to use NestJs, Node.js and React to build the full stack web application with just javascript family
+
 ## Run the whole application Locally:
    1. Install prerequisite software Docker, if Docker is installed, skip this step
    2. go to the root folder which containing the Docker-compose-dev.yml file
@@ -8,11 +10,7 @@
    A. Node Js Server: localhost:5000 
    
    B. Front End: localhost:4500
-   
- ## PostgreSQL DB
-    A. Host url: localhost:5500 
-    B. user:"root", password:"stockx", database:"stockX"
-    please use above information to manage database via PgAdmin tool
+  
     
   ## Ports:
    All the ports has been set in the env.config.ts (schema file) and environment file( such as development.json) in the node-api project based on development, and the docker file can overwrite the ports in the deployment time
